@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      form {
+        width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+      label {
+        font-weight: bold;
+      }
+      input,
+      select,
+      button,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="text-align: center">User Information Form</h2>
+
+    <form action="">
+      <label for="fname">First Name:</label>
+      <input type="text" id="fname" name="fname" required />
+
+      <label for="lname">Last Name:</label>
+      <input type="text" id="lname" name="lname" required />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="1" required />
+
+      <label for="sex">Sex:</label>
+      <select id="sex" name="sex" required>
+        <option value="" disabled selected>Select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="fname">Description</label>
+      <textarea rows="10" type="textarea" id="fdesc" name="fdec" required>
+you will learn how to make a website. They offer free tutorials in all web development technologies.
+</textarea
+      >
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
