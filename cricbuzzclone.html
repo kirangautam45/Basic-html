@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CricketBuzz - Live Cricket Scores</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #f1f1f1;
+      }
+
+      .header {
+        background-color: #2d8259;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .nav {
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-item {
+        cursor: pointer;
+      }
+
+      .login-button {
+        background-color: white;
+        color: #444;
+        padding: 6px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        margin-left: 20px;
+      }
+
+      .user-icon {
+        width: 24px;
+        height: 24px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #2d8259;
+        font-weight: bold;
+      }
+
+      .matches-bar {
+        background-color: #333;
+        color: white;
+        padding: 12px 20px;
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .match-tab {
+        margin-right: 15px;
+        cursor: pointer;
+      }
+
+      .match-tab.active {
+        font-weight: bold;
+      }
+
+      .view-all {
+        margin-left: auto;
+        cursor: pointer;
+      }
+
+      .match-header {
+        padding: 20px;
+        background-color: white;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .match-title {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .match-info {
+        display: flex;
+        color: #666;
+        font-size: 14px;
+        gap: 20px;
+      }
+
+      .navigation-tabs {
+        display: flex;
+        background-color: white;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .tab {
+        padding: 15px 20px;
+        cursor: pointer;
+      }
+
+      .tab.active {
+        color: #2d8259;
+        font-weight: bold;
+        border-bottom: 3px solid #2d8259;
+      }
+
+      .match-content {
+        padding: 20px;
+        background-color: white;
+        min-height: 200px;
+      }
+
+      .match-info-grid {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-gap: 10px;
+      }
+
+      .info-label {
+        font-weight: bold;
+      }
+
+      .squad-list {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .news-section {
+        float: right;
+        width: 30%;
+        background-color: white;
+        padding: 20px;
+      }
+
+      .news-header {
+        color: #2d8259;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .news-item {
+        display: flex;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+      }
+
+      .news-image {
+        width: 80px;
+        height: 60px;
+        background-color: #ddd;
+        margin-right: 10px;
+      }
+
+      .news-content h3 {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .news-time {
+        color: #888;
+        font-size: 12px;
+      }
+
+      @media (max-width: 768px) {
+        .match-info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .news-section {
+          float: none;
+          width: 100%;
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header with navigation -->
+    <section class="header">
+      <div class="logo">cricbuzz</div>
+      <div class="nav">
+        <div class="nav-item">Live Scores</div>
+        <div class="nav-item">Schedule</div>
+        <div class="nav-item">Archives</div>
+        <div class="nav-item">News</div>
+        <div class="nav-item">Series</div>
+        <div class="nav-item">Teams</div>
+        <div class="nav-item">Videos</div>
+        <div class="nav-item">Rankings</div>
+        <div class="nav-item">More</div>
+        <div class="login-button">Cricbuzz Plus</div>
+        <div class="user-icon">👤</div>
+      </div>
+    </section>
+
+    <!-- Matches navigation bar -->
+    <section class="matches-bar">
+      <div class="match-tab">MATCHES</div>
+      <div class="match-tab">SRH vs DC - Complete</div>
+      <div class="match-tab">RR vs CSK - Preview</div>
+      <div class="match-tab">GT vs MI - GT Won</div>
+      <div class="match-tab">RCB vs CSK - RCB Won</div>
+      <div class="match-tab">SRH vs LSG - LSG Won</div>
+      <div class="view-all">ALL ▼</div>
+    </section>
+
+    <!-- Match header -->
+    <section class="match-header">
+      <div class="match-title">
+        Rajasthan Royals vs Chennai Super Kings, 11th Match - Live Cricket
+        Score, Commentary
+      </div>
+      <div class="match-info">
+        <div class="series">Series: Indian Premier League 2025</div>
+        <div class="venue">Venue: Barsapara Cricket Stadium, Guwahati</div>
+        <div class="date-time">Date & Time: Mar 30, 07:30 PM LOCAL</div>
+      </div>
+    </section>
+
+    <!-- Navigation tabs -->
+    <section class="navigation-tabs">
+      <div class="tab">Commentary</div>
+      <div class="tab active">Scorecard</div>
+      <div class="tab">Squads</div>
+      <div class="tab">Highlights</div>
+      <div class="tab">Full Commentary</div>
+      <div class="tab">Live Blog</div>
+      <div class="tab">Points Table</div>
+      <div class="tab">Match Facts</div>
+      <div class="tab">News</div>
+      <div class="tab">Photos</div>
+    </section>
+    <div style="display: flex; justify-content: space-evenly">
+      <!-- Match content -->
+      <section class="match-content" style="width: 70%">
+        <p>The scorecard will appear once the match starts.</p>
+        <p style="color: #b06f0f; margin-top: 15px">
+          Match starts at Mar 30, 14:00 GMT
+        </p>
+
+        <h2
+          style="
+            background-color: #555;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+          "
+        >
+          Match Info
+        </h2>
+
+        <section class="match-info-grid">
+          <div class="info-label">Match</div>
+          <div>RR vs CSK, 11th Match, Indian Premier League 2025</div>
+
+          <div class="info-label">Date</div>
+          <div>Sunday, March 30, 2025</div>
+
+          <div class="info-label">Time</div>
+          <div>8:00 PM</div>
+
+          <div class="info-label">Venue</div>
+          <div>Barsapara Cricket Stadium, Guwahati</div>
+
+          <div class="info-label">Umpires</div>
+          <div>Adrian Holdstock, Akshay Totre</div>
+
+          <div class="info-label">Third Umpire</div>
+          <div>Rohan Pandit</div>
+
+          <div class="info-label">Match Referee</div>
+          <div>Shakti Singh</div>
+
+          <div class="info-label">Rajasthan Royals Squad</div>
+          <div class="squad-list">
+            Riyan Parag (c), Dhruv Jurel (wk), Yashasvi Jaiswal, Sanju Samson,
+            Nitish Rana, Wanindu Hasaranga, Shubham Dubey, Shimron Hetmyer,
+            Jofra Archer, Maheesh Theekshana, Tushar Deshpande, Sandeep Sharma,
+            Kunal Singh Rathore, Akash Madhwal, Kumar Kartikeya, Kwena Maphaka,
+            Fazalhaq Farooqi, Yudhvir Singh Charak, Ashok Sharma, Vaibhav
+            Suryavanshi
+          </div>
+
+          <div class="info-label">Chennai Super Kings Squad</div>
+          <div class="squad-list">
+            Ruturaj Gaikwad (c), MS Dhoni (wk), Rachin Ravindra, Rahul Tripathi,
+            Deepak Hooda, Sam Curran, Shivam Dube, Ravindra Jadeja, Ravichandran
+            Ashwin, Noor Ahmad, Matheesha Pathirana, Khaleel Ahmed, Kamlesh
+            Nagarkoti, Vijay Shankar, Jamie Overton, Shaik Rasheed, Shreyas
+            Gopal, Devon Conway, Mukesh Choudhary, Anshul Kamboj, Nathan Ellis,
+            Gurjapneet Singh, Ramakrishna Ghosh, Andre Siddarth C, Vansh Bedi
+          </div>
+        </section>
+      </section>
+
+      <!-- News section -->
+      <section class="news-section">
+        <div class="news-header">LATEST NEWS</div>
+
+        <section class="news-item">
+          <div class="news-image"></div>
+          <div class="news-content">
+            <h3>India's white-ball tour headlines Australia's bumper summer</h3>
+            <div class="news-time">2h ago</div>
+          </div>
+        </section>
+
+        <section class="news-item">
+          <div class="news-image"></div>
+          <div class="news-content">
+            <h3>Aniket Verma: SRH's Bhopal find with big six-hitting dreams</h3>
+            <div class="news-time">3h ago</div>
+          </div>
+        </section>
+
+        <section class="news-item">
+          <div class="news-image"></div>
+          <div class="news-content">
+            <h3>IPL 2025 - News Digest</h3>
+            <div class="news-time">8h ago</div>
+          </div>
+        </section>
+
+        <section class="news-item">
+          <div class="news-image"></div>
+          <div class="news-content">
+            <h3>ODI scrapped from Bangladesh's tour of Pakistan in May</h3>
+            <div class="news-time">11h ago</div>
+          </div>
+        </section>
+
+        <section class="news-item">
+          <div class="news-image"></div>
+          <div class="news-content">
+            <h3>Data Shorts: GT quicks go slow to maximize impact</h3>
+            <div class="news-time">11h ago</div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </body>
+</html>
